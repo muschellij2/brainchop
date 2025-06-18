@@ -1,0 +1,20 @@
+Package: brainchop
+Title: Performs Skull Stripping/Mind Grabbing
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "John",
+           family = "Muschelli",
+           role = c("aut", "cre"),
+           email = "muschellij2@gmail.com",
+           comment = c(ORCID = "0000-0001-6469-1750"))
+Description: Uses 'reticulate' to interface the 'brainchop' command line
+  interface <https://github.com/neuroneural/brainchop-cli> to perform
+  skull stripping/mind grabbing.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports: 
+    assertthat,
+    neurobase,
+    reticulate
