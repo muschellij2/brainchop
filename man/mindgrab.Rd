@@ -3,6 +3,8 @@
 \name{mindgrab}
 \alias{mindgrab}
 \alias{brainchop}
+\alias{ct_mindgrab}
+\alias{ct_brainchop}
 \title{Run Brain Chop/Mind Grab}
 \usage{
 mindgrab(
@@ -30,6 +32,10 @@ brainchop(
   export_classes = FALSE,
   device = c("CPU", "NV", "AMD", "QCOM", "METAL", "CUDA", "GPU", "LLVM", "WEBGPU")
 )
+
+ct_mindgrab(...)
+
+ct_brainchop(...)
 }
 \arguments{
 \item{input}{input image or filename}
@@ -54,6 +60,8 @@ only if the model is \code{mindgrab}}
 
 \item{device}{device for running the model, defaults to "CPU". If
 \code{NULL}, it will use the default device set in the environment.}
+
+\item{...}{additional arguments (not used)}
 }
 \value{
 A list of the input and output images and files created,

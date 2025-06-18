@@ -179,3 +179,15 @@ mindgrab = function(
 #' @export
 #' @rdname mindgrab
 brainchop = mindgrab
+
+
+#' @export
+#' @rdname mindgrab
+#' @param ... additional arguments (not used)
+ct_mindgrab = function(...) {
+  mindgrab(..., ct = TRUE)
+}
+
+#' @export
+#' @rdname mindgrab
+ct_brainchop = ct_mindgrab

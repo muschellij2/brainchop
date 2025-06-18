@@ -2,4 +2,6 @@
 
 export(bc_list_models)
 export(brainchop)
+export(ct_brainchop)
+export(ct_mindgrab)
 export(mindgrab)
