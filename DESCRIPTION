@@ -18,3 +18,5 @@ Imports:
     assertthat,
     neurobase,
     reticulate
+URL: https://github.com/muschellij2/brainchop
+BugReports: https://github.com/muschellij2/brainchop/issues
