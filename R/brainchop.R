@@ -46,6 +46,12 @@ mindgrab = function(
     device = match.arg(device)
     env_args = list(1)
     names(env_args) = device
+    value = Sys.getenv(device)
+    reset_args = env_args
+    on.exit({
+      reset_args[[1]] = value
+      do.call(Sys.setenv, args = reset_args)
+    })
     do.call(Sys.setenv, args = env_args)
   }
 
@@ -53,7 +59,7 @@ mindgrab = function(
   input = path.expand(input)
   input = normalizePath(input, mustWork = TRUE)
 
-  output = tempfile(fileext = ".nii.gz")
+  file_output = tempfile(fileext = ".nii.gz")
   mask = tempfile(fileext = ".nii.gz")
 
   assertthat::assert_that(
@@ -152,13 +158,13 @@ mindgrab = function(
 
   subprocess = reticulate::import("subprocess", convert = FALSE)
   subprocess$run(
-    cmdm + c("-gz", "1", mask, "-odt", "char"),
+    c(cmdm, "-gz", "1", mask, "-odt", "char"),
     input = full_input,
     check = TRUE
   )
   cmd = c(cmd, "-reslice_mask", "-")
   output_dtype = "input_force"
-  cmd = c(cmd,  "-gz", "1", output, "-odt", output_dtype)
+  cmd = c(cmd,  "-gz", "1", file_output, "-odt", output_dtype)
 
   subprocess$run(cmd, input = full_input, check = TRUE)
 
