@@ -174,8 +174,8 @@ mindgrab = function(
   })
   result = list(
     input = input,
-    output_file = output,
-    output = neurobase::readnii(output),
+    output_file = file_output,
+    output = neurobase::readnii(file_output),
     mask_file = mask,
     mask = neurobase::readnii(mask)
   )
