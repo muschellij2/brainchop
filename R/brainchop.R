@@ -43,15 +43,23 @@ mindgrab = function(
       "WEBGPU")
 ) {
   if (!is.null(device)) {
-    device = match.arg(device)
-    env_args = list(1)
-    names(env_args) = device
-    value = Sys.getenv(device)
-    reset_args = env_args
+    devices = c(
+      "CPU",
+      "NV",
+      "AMD",
+      "QCOM",
+      "METAL",
+      "CUDA",
+      "GPU",
+      "LLVM",
+      "WEBGPU")
+    reset_args = as.list(Sys.getenv(devices))
     on.exit({
-      reset_args[[1]] = value
       do.call(Sys.setenv, args = reset_args)
     })
+    device = match.arg(device, choices = devices)
+    env_args = as.list(sapply(devices, function(x) 0))
+    env_args[[device]] = 1L
     do.call(Sys.setenv, args = env_args)
   }
 
